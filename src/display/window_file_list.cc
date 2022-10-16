@@ -34,6 +34,7 @@
 //           Skomakerveien 33
 //           3185 Skoppum, NORWAY
 
+#define _GNU_SOURCE
 #include "config.h"
 
 #include <locale>

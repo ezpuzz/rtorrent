@@ -44,6 +44,10 @@
 #include <rak/path.h>
 #include <torrent/exceptions.h>
 
+#ifdef __CYGWIN__
+#include <string.h>
+#endif
+
 #include "directory.h"
 
 namespace utils {
@@ -87,8 +91,12 @@ Directory::update(int flags) {
     itr->d_reclen = 0;
     itr->d_type = s.st_mode;
 #else
-    itr->d_fileno = entry->d_fileno;
+#ifdef __CYGWIN__
+    itr->d_reclen = __builtin_offsetof (struct dirent, d_name) + strlen (entry->d_name) + 1;
+#else
     itr->d_reclen = entry->d_reclen;
+#endif
+    itr->d_fileno = entry->d_fileno;
     itr->d_type   = entry->d_type;
 #endif
 

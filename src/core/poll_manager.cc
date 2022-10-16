@@ -54,7 +54,7 @@ torrent::Poll*
 create_poll() {
   const char* poll_name = getenv("RTORRENT_POLL");
 
-  int maxOpen = sysconf(_SC_OPEN_MAX);
+  int maxOpen = 8192;
 
   torrent::Poll* poll = NULL;
 

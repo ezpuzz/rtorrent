@@ -34,6 +34,7 @@
 //           Skomakerveien 33
 //           3185 Skoppum, NORWAY
 
+#define _GNU_SOURCE
 #ifndef RTORRENT_DISPLAY_FILE_LIST_H
 #define RTORRENT_DISPLAY_FILE_LIST_H
 
